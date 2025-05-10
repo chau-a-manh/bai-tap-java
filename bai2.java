@@ -1,59 +1,30 @@
-package main;
+package test;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTabbedPane;
-import javax.swing.JLabel;
+import java.util.Scanner;
 
-// Tạo ứng dụng với JTabbedPane 
-
-public class bai2 extends JFrame {
-
-    private JPanel contentPane;
-
-    /**
-     * Launch the application.
-     */
+public class bai2 {
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    bai2 frame = new bai2();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Nhập độ dài cạnh a: ");
+        int a = scanner.nextInt();
+        
+        System.out.print("Nhập độ dài cạnh b: ");
+        int b = scanner.nextInt();
+        
+        System.out.print("Nhập độ dài cạnh c: ");
+        int c = scanner.nextInt();
+        
+        if (isTriangle(a, b, c)) {
+            System.out.println("Ba số này có thể là độ dài của ba cạnh một tam giác.");
+        } else {
+            System.out.println("Ba số này không thể là độ dài của ba cạnh một tam giác.");
+        }
+        
+        scanner.close();
     }
-
-    /**
-     * Create the frame.
-     */
-    public bai2() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 500, 400);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);
-        contentPane.setLayout(new BorderLayout());
-
-        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        contentPane.add(tabbedPane, BorderLayout.CENTER);
-        
-        // Tab Home
-        JLabel lblHome = new JLabel("Welcome to Home Tab");
-        tabbedPane.addTab("Home", lblHome);
-        
-        // Tab Profile
-        JLabel lblProfile = new JLabel("This is your Profile Tab");
-        tabbedPane.addTab("Profile", lblProfile);
-        
-        // Tab Settings
-        JLabel lblSettings = new JLabel("Adjust your Settings here");
-        tabbedPane.addTab("Settings", lblSettings);
+    
+    public static boolean isTriangle(int a, int b, int c) {
+        return (a + b > c) && (a + c > b) && (b + c > a);
     }
 }
