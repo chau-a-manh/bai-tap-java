@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add/Edit Task</title>
+</head>
+<body>
+    <h1>${task.id == null ? "Add New Task" : "Edit Task"}</h1>
+    <form action="/tasks/save" method="post">
+        <input type="hidden" name="id" value="${task.id}">
+        <label>Title:</label><br>
+        <input type="text" name="title" value="${task.title}"><br>
+        <label>Description:</label><br>
+        <textarea name="description">${task.description}</textarea><br>
+        <label>Completed:</label>
+        <input type="checkbox" name="completed" ${task.completed ? "checked" : ""}><br><br>
+        <button type="submit">Save</button>
+    </form>
+    <a href="/tasks">Back to List</a>
+</body>
+</html>
